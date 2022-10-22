@@ -1,0 +1,70 @@
+JWT
+---
+
+token generation for user authentication
+jsonwebtoken-library used to generate tokens -----npm i jsonwebtoken
+sign()-method to generate token
+
+token generated and sent to client
+
+
+token validation
+----------------
+
+middlewares- its a method, has 3 arguments : req,res,next
+
+    2 types of middleware
+1.application specific middleware 
+2.router specific middleware
+
+
+mongo shell commands
+---------------------
+
+    1.  to see databases - show dbs 
+
+    2.  use database - use databasename
+                            (bankserver) 
+
+    3.  see collections inside that database - show collections
+
+    4.  view datas inside collections - db.collectionname.find
+                                            (users) 
+
+    5.  particular single data - db.users.findOne({acno:1000})
+                       present - object
+                   not present - null
+
+    6.   to insert data (one at a time)(JSON format) - db.users.insertOne({"acno": 1002, "username": "anu", "password": 123, "balance": 200000, "transaction": []})
+                                        - db.users.insertOne({"acno": 1002, "username": "anu", "transaction": []})
+* mongodb- there is no predefined structure for the incoming data with a dynamic schema facility.
+
+    7.  display person having balance 100000 above - db.users.find({balance:{$gt:100000}})
+
+    8.  delete data - db.users.deleteOne({acno:1002})
+             delete count : 1
+             if we delete the same person  - db.users.deleteOne({acno:1002})
+             delete count : 0
+        
+    9.  update - db.users.updateONE({username:"anu"},{$set{username:"anu v"}})
+               - db.users.updateONE({username:"arun"},{$set{username:"arun v"}},upsert:true) // to add new data to the db 
+
+
+CRUD : create,read,update,delete
+
+register    insert
+login       findOne
+deposit     update
+withdraw    update
+
+
+bank server backend :
+----------------------
+
+server and backend runs in different port so intergrate them
+    server-backend: mongoose       npm i mongoose
+
+
+
+server and angular runs in differnt port numbers; it should communicate each other to share data---cors (library) 
+(cross origin resourse sharing)     npm i cors
